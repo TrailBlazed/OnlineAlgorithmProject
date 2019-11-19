@@ -1,7 +1,7 @@
 import networkx as nx
 import collections
 import pandas as pd
-import matplotlib as mtl
+import matplotlib.pyplot as mtl
 def girvan(G):
     c= sorted(nx.connected_components(G), key = len, reverse=True)
     l=len(c)
@@ -29,16 +29,19 @@ for i in c:
 c,l=girvan(G)
 print('number of connected componets are:',l)
 for i in c:
-    print(i)"""
+    print(i)
 df=pd.read_csv("/home/sarada/PycharmProjects/Online_Blockchain/000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.csv",names=["s","t"])
 df = df.apply(lambda x: x.astype(str))
 G = nx.from_pandas_edgelist(df, source='s', target='t')
-
+"""
+G= nx.read_adjlist(r"D:\Online Algo\project\graphs\5\000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
 c,l=girvan(G)
 
 
 print('Number of connected componets are:',l)
 for i in c:
     print(i)
-nx.draw(G, node_color=list(c.values()))
+nx.draw(G,node_size=5)
 mtl.show()
+
+print(len(list(G.nodes)))
