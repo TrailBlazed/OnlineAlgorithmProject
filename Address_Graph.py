@@ -15,7 +15,7 @@ def get_block_data():
         count = 0
         block_hash1 = "00000000000002e3269b8a00caf315115297c626f954770e8398470d7f387e1c"
         block_hash = "000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214"
-        file_path = os.path.join(r'D:\Online Algo\project\graphs\ijson', block_hash + ".txt")
+        file_path = os.path.join(r'/home/sarada/PycharmProjects/OnlineProject', block_hash + ".txt")
         if os.path.isfile(file_path):
             os.remove(file_path)
         while count < 20:

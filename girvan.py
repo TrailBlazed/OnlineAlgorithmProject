@@ -34,7 +34,7 @@ df=pd.read_csv("/home/sarada/PycharmProjects/Online_Blockchain/00000000000000388
 df = df.apply(lambda x: x.astype(str))
 G = nx.from_pandas_edgelist(df, source='s', target='t')
 """
-G= nx.read_adjlist(r"D:\Online Algo\project\graphs\5\000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
+G= nx.read_adjlist(r"/home/sarada/PycharmProjects/OnlineProject/000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
 c,l=girvan(G)
 
 
