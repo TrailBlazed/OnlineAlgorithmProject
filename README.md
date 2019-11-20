@@ -5,13 +5,13 @@ To get any graph, import
 
 * To get the <b>COMPOSITE</b> graph object: <br>
  Suppose you want a COMPOSITE graph for 10 days from date February 9, 2009 then :<br>
- <h5>Inputs: </h5>
+    * Inputs: 
 dd = 9  <br>
 mm = 2 <br>
 yy = 2009  <br>
 dOffset = 10 <br>
 graphType = COMPOSITE
-<h5>Output: </h5>
+    * Output:
 Two values will be returned:<br>
  "Success"/"Fail"<br>
  The composite graph in the form of object of <b>MultiDiGraph</b>
