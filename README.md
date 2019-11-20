@@ -1,7 +1,28 @@
-# OnlineProject# Graph
+# Graph
 To get any graph, import 
-<b>getGraph(dd, mm, yy, dOffset,graphType,dirPath)</b> function from getAPIData 
+<b>getGraph(dd, mm, yy, dOffset,graphType)</b> function from getAPIData 
 <br>
+
+* To get the <b>COMPOSITE</b> graph object: <br>
+ Suppose you want a COMPOSITE graph for 10 days from date February 9, 2009 then :<br>
+ <h5>Inputs: </h5>
+dd = 9  <br>
+mm = 2 <br>
+yy = 2009  <br>
+dOffset = 10 <br>
+graphType = COMPOSITE
+<h5>Output: </h5>
+Two values will be returned:<br>
+ "Success"/"Fail"<br>
+ The composite graph in the form of object of <b>MultiDiGraph</b>
+
+
+![Image of Composite graph](composite.png)
+
+
+
+
+
 <h3>Inputs: </h3>
 <b>graphType</b> may take one of the three values :<br>
 <ul>
@@ -9,12 +30,6 @@ To get any graph, import
 <li>ADDRESS
 <li>TRANSACTION
 </ul>
-Suppose you want a COMPOSITE graph for 10 days from date February 9, 2009 at a location "../XYZ" then :<br>
-dd = 9  <br>
-mm = 2 <br>
-yy = 2009  <br>
-dOffset = 10 <br>
-graphType = COMPOSITE
 dirPath = "../XYZ"
 
 <h3>Output:</h3>
