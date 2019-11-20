@@ -57,4 +57,7 @@ Two values will be returned:<br>
         * The transaction graph in the form of object of <b>MultiDiGraph</b>
     * Here, edges of the graph will be of only 1 type:
         * "From:" Transaction, "To:" Transaction, Amount
-      
+        
+        
+<h6>References</h6>
+[1] Images from "Data Science on Blockchain", UM Learn, Cuneyt Gurcan Akcora
