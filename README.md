@@ -14,8 +14,8 @@ dOffset = 10 <br>
 graphType = COMPOSITE
     * Output:
 Two values will be returned:<br>
- "Success"/"Fail"<br>
- The composite graph in the form of object of <b>MultiDiGraph</b>
+        * "Success"/"Fail"<br>
+        * The composite graph in the form of object of <b>MultiDiGraph</b>
     * Here, edges of the graph will be of 2 types:
         * "From:" Address, "To:" Transaction hash, Amount
         * "From:" Transaction hash, "To:" Address, Amount
@@ -35,8 +35,8 @@ dOffset = 10 <br>
 graphType = ADDRESS
     * Output:
 Two values will be returned:<br>
- "Success"/"Fail"<br>
- The address graph in the form of object of <b>MultiDiGraph</b>
+        * "Success"/"Fail"<br>
+        * The address graph in the form of object of <b>MultiDiGraph</b>
     * Here, edges of the graph will be of only 1 type:
         * "From:" Address, "To:" Address, Amount
       
@@ -53,8 +53,8 @@ dOffset = 10 <br>
 graphType = TRANSACTION
     * Output:
 Two values will be returned:<br>
- "Success"/"Fail"<br>
- The transaction graph in the form of object of <b>MultiDiGraph</b>
+        * "Success"/"Fail"<br>
+        * The transaction graph in the form of object of <b>MultiDiGraph</b>
     * Here, edges of the graph will be of only 1 type:
         * "From:" Transaction, "To:" Transaction, Amount
       
