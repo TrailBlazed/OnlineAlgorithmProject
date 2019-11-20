@@ -1,8 +1,9 @@
 # Graph
 To get any graph, import 
-<b>getGraph(dd, mm, yy, dOffset,graphType)</b> function from getAPIData 
+<b>getGraph(dd, mm, yy, dOffset,graphType)</b> function from getAPIData. 
 <br>
 
+![Image of Composite graph](composite.png)
 * To get the <b>COMPOSITE</b> graph object: <br>
  Suppose you want a COMPOSITE graph for 10 days from date February 9, 2009 then :<br>
     * Inputs: 
@@ -15,12 +16,12 @@ graphType = COMPOSITE
 Two values will be returned:<br>
  "Success"/"Fail"<br>
  The composite graph in the form of object of <b>MultiDiGraph</b>
+    * Here, edges of the graph will be of 2 types:
+        * Address, Transaction hash, Amount
+        * Transaction hash, Address, Amount
 
-
-![Image of Composite graph](composite.png)
-
-
-
+One can differentiate Transaction hash by its length, which is 64.
+   
 
 
 <h3>Inputs: </h3>
