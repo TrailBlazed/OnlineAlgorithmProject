@@ -1,49 +1,34 @@
 import networkx as nx
+def eccentricity(G, v=None, sp=None):
+    order = G.order()
 
-"""def diameter(self):
-    
-    v = self.vertices()
-    pairs = [(v[i], v[j]) for i in range(len(v) - 1) for j in range(i + 1, len(v))]
-    smallest_paths = []
-    for (s, e) in pairs:
-        paths = self.find_all_paths(s, e)
-        smallest = sorted(paths, key=len)[0]
-        smallest_paths.append(smallest)
-
-    smallest_paths.sort(key=len)
-
-    # longest path is at the end of list, 
-    # i.e. diameter corresponds to the length of this path
-    diameter = len(smallest_paths[-1]) - 1
-    return diameter
-graph = nx.karate_club_graph()
-
-diameter = graph.diameter()
-
-print(diameter)"""
-
-
-def longest_path(G):
-    dist = {} # stores [node, distance] pair
-    for node in nx.topological_sort(G):
-        # pairs of dist,node for all incoming edges
-        pairs = [(dist[v][0]+1,v) for v in G.pred[node]]
-        if pairs:
-            dist[node] = max(pairs,key=lambda x:x[0])
+    e = {}
+    for n in G.nbunch_iter(v):
+        if sp is None:
+            length = nx.single_source_shortest_path_length(G, n)
+            L = len(length)
         else:
-            dist[node] = (0, node)
-    node,(length,_)  = max(dist.items(), key=lambda x:x[1])
-    path = []
-    while length > 0:
-        path.append(node)
-        length,node = dist[node]
-    return list(reversed(path))
+            try:
+                length = sp[n]
+                L = len(length)
+            except TypeError:
+                raise nx.NetworkXError('Format of "sp" is invalid.')
+        if L != order:
+            msg = "Graph not connected: infinite path length"
+            raise nx.NetworkXError(msg)
 
+        e[n] = max(length.values())
+
+    if v in G:
+        return e[v]  # return single value
+    else:
+        return e
+def diameter(G, e=None):
+
+    if e is None:
+        e=eccentricity(G)
+    return max(e.values())
 if __name__=='__main__':
-    G = nx.DiGraph()
-    G.add_edge("1","2")
-    G.add_edge("2","3")
-    G.add_edge("1","3")
-    G.add_edge("4", "1")
-#    G.add_path([20,2,200,31])
-    print (longest_path(G))
+    G = nx.karate_club_graph()
+    print (diameter(G))
+    print(nx.diameter(G))
