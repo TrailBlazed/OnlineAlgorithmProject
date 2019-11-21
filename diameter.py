@@ -29,7 +29,7 @@ def longest_path(G):
         # pairs of dist,node for all incoming edges
         pairs = [(dist[v][0]+1,v) for v in G.pred[node]]
         if pairs:
-            dist[node] = max(pairs)
+            dist[node] = max(pairs,key=lambda x:x[0])
         else:
             dist[node] = (0, node)
     node,(length,_)  = max(dist.items(), key=lambda x:x[1])
