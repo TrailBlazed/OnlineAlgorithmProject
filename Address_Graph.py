@@ -2,30 +2,34 @@ from collections import defaultdict
 from urllib.request import urlopen
 import os
 import ijson
-BLOCK_URL = "https://blockchain.info/rawblock/"
 
+BLOCK_URL = "https://blockchain.info/rawblock/"
+LATEST_BLOCK = "https://blockchain.info/latestblock"
 graph = defaultdict(list)
 
-def get_block_data():
+
+def get_block_data(path):
     """
     Method to get block data
     """
     try:
         trans_count = 0
         count = 0
-        block_hash1 = "00000000000002e3269b8a00caf315115297c626f954770e8398470d7f387e1c"
-        block_hash = "000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214"
-        file_path = os.path.join(r'/home/sarada/PycharmProjects/OnlineProject', block_hash + ".txt")
+        res = urlopen(LATEST_BLOCK)
+        latest_hash = ijson.items(res, 'hash')
+        for h in latest_hash:
+            block_hash = str(h)
+        file_path = os.path.join(path, block_hash + ".txt")
         if os.path.isfile(file_path):
             os.remove(file_path)
-        while count < 20:
+        while count < 2:
+            print(block_hash)
             url = BLOCK_URL + block_hash
             response = urlopen(url)
             res2 = urlopen(url)
-            next_block = ijson.items(res2,'next_block.item')
-            for read_next in next_block:
+            prevblock = ijson.items(res2, 'prev_block')
+            for read_next in prevblock:
                 block_hash = str(read_next)
-
             objects = ijson.items(response, 'tx.item')
             read_trans = (o for o in objects)
             for prop in read_trans:
@@ -47,14 +51,15 @@ def get_block_data():
                 testlist = ""
                 for vl in v:
                     testlist = testlist + " " + str(vl)
-                #print(str(k) + testlist)
+                # print(str(k) + testlist)
                 writer.write(str(k) + testlist + "\n")
 
     except Exception as e:
-        return 'Fail',e
-    return 'Success',file_path
+        return 'Fail', e
+    return 'Success', file_path
+
 
 if __name__ == '__main__':
-    result, path = get_block_data()
+    result, path = get_block_data(r"D:\Online Algo\project\graphs\latest")
     print(result)
     print(path)
