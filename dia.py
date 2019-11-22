@@ -28,10 +28,7 @@ def diameter(G, e=None):
         e=eccentricity(G)
     return max(e.values())
 if __name__=='__main__':
-    """G = nx.karate_club_graph()
-    print(eccentricity(G))
-    print(diameter(G))"""
-    G=nx.Graph()
+    G = nx.Graph()
     G.add_node("A")
     G.add_node("B")
     G.add_node("C")
@@ -48,7 +45,8 @@ if __name__=='__main__':
     max=0
     for c in nx.connected_components(G):
         n=G.subgraph(c)
-        l=nx.diameter(n)
+        eccentricity(n)
+        l=diameter(n)
         print(l)
         if(max<l):
             max=l
