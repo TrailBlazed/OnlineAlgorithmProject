@@ -4,8 +4,6 @@ import networkx as nx
 
 def degree_distr(netwgraph):
     try:
-        # G= nx.read_adjlist(r"D:\Online Algo\project\graphs\actor imdb\actor.csv" , delimiter=',', encoding='cp1252')
-
         # Calculate the fraction of nodes having a given degree
         degrees = netwgraph.degree()
         degree_values = sorted(set(dict(degrees).values()))
