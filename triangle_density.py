@@ -1,9 +1,9 @@
 import networkx as nx
-G=nx.Graph()
+"""G=nx.Graph()
 G.add_edge("A","B")
 G.add_edge("B","C")
-G.add_edge("A","C")
-#G = nx.read_adjlist(r"/home/sarada/PycharmProjects/OnlineProject/000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
+G.add_edge("A","C")"""
+G = nx.read_adjlist(r"/home/sarada/PycharmProjects/OnlineProject/000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
 all_cliques= nx.enumerate_all_cliques(G)
 triangles=[x for x in all_cliques if len(x)==3 ] #all cliques (k=1,2,3...max degree - 1)
 t=(len(triangles))
