@@ -1,6 +1,7 @@
 import networkx as nx
 
-def calEccentricity(G, vertex=None, shortestPath=None):
+def calDiameter(G, vertex=None, shortestPath=None):
+    # calculating diameter
     order = G.order()
     eccValue = {}
     for n in G.nbunch_iter(vertex):
@@ -20,24 +21,21 @@ def calEccentricity(G, vertex=None, shortestPath=None):
         eccValue[n] = max(length.values())
 
     if vertex in G:
-        return eccValue[vertex]  # return single value
+        return max(eccValue[vertex].values())# return single value
     else:
-        return eccValue
+        return max(eccValue.values())
 
 
-def diameter(G, e=None):
+def get_diameter(netwgraph):
+    # calculating diameter of all the subgraphs and returning the maximum value
+    maxim = 0
+    try:
+        for c in nx.connected_components(netwgraph):
+            subgrph = netwgraph.subgraph(c)
+            diamt = calDiameter(subgrph)
+            if (maxim < diamt):
+                maxim = diamt
+    except Exception as e:
+        return "Fail", e
+    return "Success",maxim
 
-    if e is None:
-        e=calEccentricity(G)
-    return max(e.values())
-
-
-if __name__=='__main__':
-    G = nx.read_adjlist(r"/home/sarada/PycharmProjects/OnlineProject/000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214.txt")
-    maxim=0
-    for c in nx.connected_components(G):
-        n=G.subgraph(c)
-        l= diameter(n)
-        if(maxim<l):
-            maxim=l
-    print("diameter:"+str(maxim))

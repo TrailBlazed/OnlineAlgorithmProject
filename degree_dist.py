@@ -2,16 +2,14 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-def degree_distr(filepath):
+def degree_distr(netwgraph):
     try:
-        # Read the adjacency list for the bitcoin network graph are undirected graph
-        G = nx.read_adjlist(filepath)
         # G= nx.read_adjlist(r"D:\Online Algo\project\graphs\actor imdb\actor.csv" , delimiter=',', encoding='cp1252')
 
         # Calculate the fraction of nodes having a given degree
-        degrees = G.degree()
+        degrees = netwgraph.degree()
         degree_values = sorted(set(dict(degrees).values()))
-        histogram = [list(dict(degrees).values()).count(i) / float(nx.number_of_nodes(G)) for i in degree_values]
+        histogram = [list(dict(degrees).values()).count(i) / float(nx.number_of_nodes(netwgraph)) for i in degree_values]
 
         # Plot the degree distribution result
         plt.figure()
@@ -29,7 +27,3 @@ def degree_distr(filepath):
     return 'Success'
 
 
-if __name__ == '__main__':
-    result = degree_distr(
-        r"D:\Online Algo\project\graphs\ppt\0000000000000751db4fb6228b0b53898c70d5972623e6016e90261e45b694a2.txt")
-    print(result)
