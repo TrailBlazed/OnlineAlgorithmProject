@@ -69,7 +69,7 @@ g.addEdge(2, 0)
 g.addEdge(2, 1)
 g.addEdge(1, 3)
 
-s = 2;
+s = 1;
 d = 3
 print("Following are all different paths from %d to %d :" % (s, d))
 g.printAllPaths(s, d)
