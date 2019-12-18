@@ -18,9 +18,10 @@ get_girvan_and_plot(G)
 result1, dia = get_diameter(G)
 print("Diameter: ",dia)
 
-#Calulating the triangle density
-result2, tridens = get_triangle_density(G)
+#Calulating the triangle density and triadic closure
+result2, tridens, triadic = get_triangle_density(G)
 print("Triangle density : ",tridens)
+print("Triadic closure : ",tridens)
 
 # Degree distribution of the Bitcoin graph
-degree_distr(G)
+print(degree_distr(G))
