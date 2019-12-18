@@ -1,7 +1,7 @@
 import networkx as nx
 from girvan import get_girvan_and_plot
 from diameter import get_diameter
-from triangle_density import get_triangle_density
+from triangle_triadic import get_triangle_triadic
 from degree_dist import degree_distr
 from Address_Graph import get_block_data_early, get_block_data_latest
 
@@ -19,7 +19,7 @@ result1, dia = get_diameter(G)
 print("Diameter: ",dia)
 
 #Calulating the triangle density and triadic closure
-result2, tridens, triadic = get_triangle_density(G)
+result2, tridens, triadic = get_triangle_triadic(G)
 print("Triangle density : ",tridens)
 print("Triadic closure : ",tridens)
 

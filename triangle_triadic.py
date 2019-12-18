@@ -19,7 +19,7 @@ def count_triangle(graph):
     return n
 
 
-def get_triangle_density(netxgraph):
+def get_triangle_triadic(netxgraph):
     # calculating triangle density and triadic closure of the graph ((3 * number of triangles)/(number of wedges))
     triangle_density = 0
     try:
