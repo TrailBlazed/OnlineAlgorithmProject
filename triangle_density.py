@@ -20,7 +20,7 @@ def count_triangle(graph):
 
 
 def get_triangle_density(netxgraph):
-    # calculating triangle density of the graph ((3 * number of triangles)/(number of wedges))
+    # calculating triangle density and triadic closure of the graph ((3 * number of triangles)/(number of wedges))
     triangle_density = 0
     try:
         # removing self loops
@@ -32,7 +32,8 @@ def get_triangle_density(netxgraph):
         if n_traingle_wedges != 0:
             # calculating triangle density if there exists any triangle
             triangle_density = n_traingle_wedges / n_wedges
+        triad = nx.average_clustering(netxgraph)
 
     except Exception as e:
         return "Fail", e
-    return "Success", triangle_density
+    return "Success", triangle_density, triad
