@@ -5,17 +5,22 @@ from triangle_density import get_triangle_density
 from degree_dist import degree_distr
 from Address_Graph import get_block_data_early, get_block_data_latest
 
-#result, path = get_block_data_latest(r"D:\Online Algo\project\graphs\latest",3)
+# Getting the data from the Block
 result, path = get_block_data_early(r"D:\Online Algo\project\graphs\latest","0000000000000a3290f20e75860d505ce0e948a1d1d846bec7e39015d242884b", 3)
 
+# Creating a Bitcoin graph object from adjacency list stored in file
 G = nx.read_adjlist(path)
 
+# Calling community detection algorithm in Bitcoin graph
 get_girvan_and_plot(G)
 
+#Calculating the Bitcoin graph diameter
 result1, dia = get_diameter(G)
 print("Diameter: ",dia)
 
+#Calulating the triangle density
 result2, tridens = get_triangle_density(G)
 print("Triangle density : ",tridens)
 
+# Degree distribution of the Bitcoin graph
 degree_distr(G)

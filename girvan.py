@@ -49,7 +49,3 @@ def get_girvan_and_plot(G):
     return "Success"
 
 
-if __name__ == '__main__':
-    G = nx.read_adjlist(
-        r"D:\Online Algo\project\graphs\ijson\000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506.txt")
-    print(get_girvan_and_plot(G))
