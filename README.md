@@ -1,4 +1,4 @@
-# Bitcoin Graph
+# Bitcoin Graph Analysis
 <b>Aim :</b> Bitcoin address graph structural analysis
 
 
